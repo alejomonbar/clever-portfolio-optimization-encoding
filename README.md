@@ -3,6 +3,8 @@
 # Objective
 Portfolio optimization problems usually come with a set of constraints, for example, in [1] two inequality constraints are applied to ensure the assets bought do not surpass a budget and to guarantee a minimum profit (see Sec. IV A of [1]). Usually, to encode these inequality constraints in quantum computers we require extra qubits (for the slack variables). This has two disadvantages, first the probability of finding optimal solutions decrease and second the depth of the circuits increases. To solve this problem, I use unbalanced penalization [2], a new encoding method that does not require those extra qubits to encode inequality constraints. The method has been used in the traveling salesman problem, bin packing problem, and knapsack problem. I extended the solution to work with portfolio optimization enhancing the probability of finding optimal solutions and reducing the circuit depth.
 
+I solved the problem using QAOA, and VQE and compare with the results from [1].
+
 [1] Herman, D., Shaydulin, R., Sun, Y., Chakrabarti, S., Hu, S., Minssen, P., Rattew, A., Yalovetzky, R., & Pistoia, M. (2022). Portfolio Optimization via Quantum Zeno Dynamics on a Quantum Processor. http://arxiv.org/abs/2209.15024
 
 [2] Montanez-Barrera, A., Willsch, D., Maldonado-Romo, A. & Michielsen, K. (2022). Unbalanced penalization: A new approach to encode inequality constraints of combinatorial problems for quantum optimization algorithms. 23–25. http://arxiv.org/abs/2211.13914
