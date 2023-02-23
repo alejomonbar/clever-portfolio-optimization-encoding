@@ -1,2 +1,17 @@
-# Enhancing portfolio optimization solutions: wisely encoding constrained combinatorial optimization problems on quantum devices
+# Enhancing portfolio optimization solutions
+## Wisely encoding constrained combinatorial optimization problems on quantum devices
+# Objective
+Portfolio optimization problems usually come with set of constraints, for example in [1] two inequality constraints are apply to ensure the assets bought do not surpass a budget and to guarantee a minimum profit (see Sec.IV A of [1]). Usually, to encode these inequality constraints in quantum computers we require extra qubits (for the slack variables). This has two disadvantages, first the probability of finding optimal solutions decrease and second the depth of the circuits increase. I use unbalanced penalization [2], a new encoding method that do not require those extra qubits to encode inequality constraints. The method has been used in the traveling salesman problem, bin packing problem and knapsack problem. I extended the solution to work with portfolio optimization enhancing the probability of finding optimal solutions and reducing the circuit depth.
 
+[1] Herman, D., Shaydulin, R., Sun, Y., Chakrabarti, S., Hu, S., Minssen, P., Rattew, A., Yalovetzky, R., & Pistoia, M. (2022). Portfolio Optimization via Quantum Zeno Dynamics on a Quantum Processor. http://arxiv.org/abs/2209.15024
+
+[2] Montanez-Barrera, A., Willsch, D., Maldonado-Romo, A. & Michielsen, K. (2022). Unbalanced penalization: A new approach to encode inequality constraints of combinatorial problems for quantum optimization algorithms. 23–25. http://arxiv.org/abs/2211.13914
+
+# Introduction
+Solving combinatorial optimization problems (COP) using quantum devices is a promising area of research with significant potential for practical applications, and it is expected to be one of the main use cases for early quantum computers. One of the main representatives of COP is portfolio optimization owes to its applicability to financial services. Modern portfolio optimization is modeled by a function that tries to increase the profit as possible while keeping the risk associeted to buy a set of assets as low as possible, it is described by
+
+$$f(x) = -\mu x + x^T \sigma x$$
+
+where $x=\\{0,1\\}^n$ is a vector that represent the set of assets with value 1 if the asset is selected, $\mu$ is the expected return, and $\sigma$ is the covariance matrix associated with the risk. Different constraints can be impose to this model depending on the requirements, between them the most important is the one for not exceeding the maximum budget.
+
+$$ \sum_i^n c_i x_i \le Budget$$  
