@@ -14,19 +14,17 @@ Portfolio optimization problems usually come with a set of constraints, for exam
 In this section, it is used the unbalanced penalization method [[2]](https://arxiv.org/pdf/2211.13914.pdf) to encode different portfolio optimization problems subject to the following conditions 
 
 * Cost function
-<div class="alert alert-block alert-success">
+
 $$\large{\min_{x \in \{0,1\}^{n}} q  x^T\Sigma x - \mu^T x}.$$
-</div>
+
 * Budget constraint:
-<div class="alert alert-block alert-success">
+
 $$\sum_j^n x_j \le C.$$
-</div>
 
 * Minimum return constraint
 
-<div class="alert alert-block alert-success">
 $$\sum_j^n \mu_j x_j \ge R.$$
-</div>
+
 
 where $x$ is a vector with elements $x_i=1$ if stock i is choosen and 0 otherwise, $n$ is the number of assets, $q$ is the risk factor, $\Sigma$ is covariance matrix, $\mu$ is the expected return, $C$ is the budget, and $R$ is the minimum return. 
 
@@ -44,7 +42,7 @@ $$\min_{x \in \{0,1\}^{n}} q  x^T\Sigma x - \mu^T x - \lambda_1\left(C - \sum_j^
 
 This solution gets rid of the slack variables usually used for inequality constraints of QUBOs. It has the advantage of reducing the number of qubits and gates needed and it shows a huge improvement in getting the optimal solution as it is shown in Sec. IV of [[2]](https://arxiv.org/pdf/2211.13914.pdf).
 
-### results: the models comparison
+### 1.1 results: the models comparison
 
 In the figure presented below, it is shown the results of the unbalanced penalization and the results obtained in [[1]](https://arxiv.org/pdf/2209.15024.pdf)(Fig. 2 in that paper) for three different cases. (left) In this case, it shown cases from 5 up to 10 stocks for the portfolio optimization with the budget constraint. The solutions present the approximation ratio vs. the number of QAOA layers. The stars represent the unbalanced penalization method, the dotted X QAOA with X mixer, and the dashed X the Quantum Zeno dynamics with X mixer. (center) same problem but for + mixer. (right) In this case the portfolio optimization includes both constraints, budget constraint and minimum return. Note that in all the cases, the unbalanced penalization method outperform the other methods with approximation rations above 0.9 even with one QAOA layer.
 
@@ -58,11 +56,11 @@ In the figure presented below, it is shown the results of the unbalanced penaliz
 
 # 2. Portfolio optimization for S&P500 stocks
 
-In this section, it's presented the solution of portfolio optimization using real data of the [SP500](https://en.wikipedia.org/wiki/S%26P_500) stock market index. We use the python based library [yfinance](https://pypi.org/project/yfinance/) to get updated stock prices during the last three months. The solution is presented for the portfolio optimization with budget inequality constraint $\sum_{i=1}^n x_i \le C$ for the unbalanced penalization and slack encodings using QAOA and VQE. The stocks are taking randomly for a small dataset with 36 different stocks.
+In this section, it's presented the solution of portfolio optimization using real data of the [S&P500](https://en.wikipedia.org/wiki/S%26P_500) stock market index. I use the python based library [yfinance](https://pypi.org/project/yfinance/) to get updated stock prices during the last three months. The solution is presented for the portfolio optimization with budget inequality constraint $\sum_{i=1}^n x_i \le C$ for the unbalanced penalization and slack encodings using QAOA and VQE. The stocks are taking randomly for a small dataset with 36 different stocks.
 
-## 1. Results
+## 2.1 Results
 
-### 1.1 Slack variables vs. unbalanced penalization: QAOA comparison
+### 2.1.1 Slack variables vs. unbalanced penalization: QAOA comparison
 
 In the figure presented below, it is shown the results of the unbalanced penalization vs. slack variables encoding for the probability of finding the optimal solution in the portafolio optimization cases using QAOA with 1 to 5 layers. The optimal solution in this case is taking as solution found using [docplex](https://pypi.org/project/docplex/).  Fig. 1 (left) shows the unbalance penalization vs. the slack variables approach, the performance of the unbalanced penalization is two orders of magnitude greater than that of the slack variables approach. In Fig. 1 (right) it is only shown the performance of the unbalanced penalization approach, for all the cases the results of the unbalanced penalization approach are above 0.1 what means that in 100 shots on a real device, I can fing the optimal solution on average more than 10 times. 
 
@@ -85,7 +83,7 @@ Additionally, we show the resource requirements of the unbalanced penalization m
 <figcaption align = "center"> Fig.3 Resource requirements for portfolio optimization with 1 layer QAOA using the slack and unbalanced approaches. (left) the number of qubits needed (right) the number of CNOT gates for a fully connected device </figcaption>
 </figure>
 
-### 1.2 Generalization to larger stocks
+### 2.1.2 Generalization to larger stocks
 
 To test the generalization capabilities of the unbalanced penalization method. I use a local simulator for up to 17 qubits and the AWS SV1 simulator to run from 18 to 24 stocks. Fig. 4 shows the results for the unbalanced penalization using QAOA and different number of layers p from 1 up to 5. The method as it was shown in [1](https://arxiv.org/pdf/2211.13914.pdf) has good generalization capabilities because it was training with only two cases 6 and 8 stocks.
 
@@ -101,7 +99,7 @@ After 17 qubits it takes a while to get the results on the local computer. There
 <figcaption align = "center"> Fig.5 Scaling the unbalanced penalization method for the portfolio optimization using QAOA with 1 up to 5 layers. The results are from 18 to 24 stocks using AWS-SV1 with 500 shots and maximum classical solver iterations 500 </figcaption>
 </figure>
 
-### 1.2 Testing on real devices
+### 2.1.3 Testing on real devices
 
 To test if in real devices, I'm still able to obtain similar energy expectation value landscapes compare to the ideal case, I tested AWS-SV1 (ideal) vs. ibm_guadalupe (real) for 5 stocks using QAOA with 1 layer (My idea was to test also ionQ device but it takes 20 minutes to get one solution and the total cases I run were 400 for each device). I have to admit that I was expecting more noise on the real device but the energy landscapes shown in Fig.6 look really similar for both devices.
 
