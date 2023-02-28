@@ -101,12 +101,12 @@ After 17 qubits it takes a while to get the results on the local computer. There
 
 ### 2.1.3 Testing on real devices
 
-To test if in real devices, I'm still able to obtain similar energy expectation value landscapes compare to the ideal case, I tested AWS-SV1 (ideal) vs. ibm_guadalupe (real) for 5 stocks using QAOA with 1 layer (My idea was to test also ionQ device but it takes 20 minutes to get one solution and the total cases I run were 400 for each device). I have to admit that I was expecting more noise on the real device but the energy landscapes shown in Fig.6 look really similar for both devices.
+To test if in real devices, I'm still able to obtain similar energy expectation value landscapes compare to the ideal case, I tested AWS-SV1 (ideal) vs. ibm_guadalupe (real) for 5 stocks using QAOA with 1 layer (My idea was to test also ionQ device but it takes 20 minutes to get one solution and the total cases I run were 400 for each device but I could execute at least 9 cases on this device). I have to admit that I was expecting more noise on the real device but the energy landscapes shown in Fig.6 look really similar for both devices. Finally, I show results for the ionQ device for 10 shots and 9 different points in the landscape because the queue time was on average 20 minutes, no real comparison of ionQ can be taken at this point.
 
 
 <figure>
-<br><center><img src="./Images/unbalanced_comparison_real_dev.png" width="800"></center><br>
-<figcaption align = "center"> Fig.6 Comparison between AWS-SV1 and ibm_guadalupe using the unbalanced penalization encoding for 5 stocks and QAOA with 1 layer. </figcaption>
+<br><center><img src="./Images/unbalanced_comparison_real_dev_v2.png" width="800"></center><br>
+<figcaption align = "center"> Fig.6 Comparison between AWS-SV1, ibm_guadalupe, and ionQ using the unbalanced penalization encoding for 5 stocks and QAOA with 1 layer. For AWS-SV1 and ibm_guadalupe the grid is 20x20 and for ionQ 3x3.</figcaption>
 </figure>
 
 # 3. Visualization of the portfolio optimization
@@ -119,3 +119,7 @@ In this section, I try to answer this question with a visualization tool called 
 <img src="./Images/visualization_17.png" width="800px">
 <figcaption align = "center"> Fig.1  Visualization of the portfolio optimization problem for 17 stocks (up-left) The stocks prices vs. time obtained from real data of S & P 500 (up-right) The problem encoding marker size represent the proportion of the stock expected return, the width of the edges represent the correlation between different stocks (down-left) Optimal solution configuration, the red colors mean the stocks chosen (down-right) profit vs. risk for the optimal solution in red and other possible solutions in grey.</figcaption>
 </figure>
+
+# Conclusions
+
+In this project I showed how we can encode combinatorial optimization problems with inequalities constraints using the unbalanced penalization, a tool I designed to remove slack variables. I use this tool on the portfolio optimization problem with two different inequality constraints, one for the maximum budget and another for the minimum expected return. I compare specific models from "Portfolio Optimization via Quantum Zeno Dynamics on a Quantum Processor" and show that the unbalanced penalization shows better results even for a low number of layers. In the second part of the project, I run large cases of portfolio optimization showing that it can generalize. Additionally, in this section, I show the energy landscape for real devices on ibm_guadalupe and ionQ. Finally, I presented a tool to visualize portfolio optimization encoding and visualization.
