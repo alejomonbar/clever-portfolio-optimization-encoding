@@ -56,7 +56,7 @@ In the figure presented below, it is shown the results of the unbalanced penaliz
 
 # 2. Portfolio optimization for S&P500 stocks
 
-In this section, it's presented the solution of portfolio optimization using real data of the [SP500](https://en.wikipedia.org/wiki/S%26P_500) stock market index. We use the python based library [yfinance](https://pypi.org/project/yfinance/) to get updated stock prices during the last three months. The solution is presented for the portfolio optimization with budget inequality constraint $\sum_{i=1}^n x_i \le C$ for the unbalanced penalization and slack encodings using QAOA and VQE. The stocks are taking randomly for a small dataset with 36 different stocks.
+In this section, it's presented the solution of portfolio optimization using real data of the [S&P500](https://en.wikipedia.org/wiki/S%26P_500) stock market index. I use the python based library [yfinance](https://pypi.org/project/yfinance/) to get updated stock prices during the last three months. The solution is presented for the portfolio optimization with budget inequality constraint $\sum_{i=1}^n x_i \le C$ for the unbalanced penalization and slack encodings using QAOA and VQE. The stocks are taking randomly for a small dataset with 36 different stocks.
 
 ## 2.1 Results
 
