@@ -2,9 +2,9 @@
 ## Wisely encoding constrained combinatorial optimization problems on quantum devices
 # Objective
 
-1. Benchmarking unbalanced penalization using portfolio optimization
-2. Presenting an application of portfolio optimization using real stocks from S&P500 and test on real devices.
-3. Making a tool for portfolio optimization visualization 
+1. Benchmarking unbalanced penalization using portfolio optimization (file: 1_portfolio_optimization_mdls_comparison.ipynb)
+2. Presenting an application of portfolio optimization using real stocks from S&P500 and test on real devices. (file: 2_portfolio_optimization_for_SP500.ipynb)
+3. Making a tool for portfolio optimization visualization (file: 3_portfolio_optimization_visualization.ipynb)
 
 
 # 1. Portfolio optimization: Comparing unbalanced penalization vs. Quantum Zeno Dynamics
